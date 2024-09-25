@@ -1,14 +1,19 @@
 import sys
 import os
+from pydantic import PrivateAttr
 
 currentdir = os.path.dirname(os.path.realpath(__file__))
 sys.path.insert(0, currentdir)
 
-from codemaker import Codemaker
-from codebreaker import Codebreaker
+from codemaker import Codemaker  # noqa: E402
+from codebreaker import Codebreaker  # noqa: E402
 
 
 class Mastermind:
+    __codemaker: Codemaker = PrivateAttr()
+    __codebreaker: Codebreaker = PrivateAttr()
+    __max_attempts: int = PrivateAttr()
+
     def __init__(self, max_attempts: int) -> None:
         self.__codemaker = Codemaker()
         self.__codebreaker = Codebreaker()

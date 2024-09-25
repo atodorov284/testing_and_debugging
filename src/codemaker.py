@@ -1,10 +1,15 @@
 import random
+from pydantic import PrivateAttr
 from copy import deepcopy
 
 MAX_CODE_LENGTH = 4
 
 
 class Codemaker:
+    __symbols: list = PrivateAttr()
+    __code_length: int = PrivateAttr()
+    __secret_code: list = PrivateAttr()
+
     def __init__(self) -> None:
         self.__symbols = ["W", "B", "Y", "G", "R", "K"]
         self.__code_length = MAX_CODE_LENGTH
