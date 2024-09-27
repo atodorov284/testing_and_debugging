@@ -18,6 +18,7 @@ class Mastermind:
         self.__codemaker = Codemaker()
         self.__codebreaker = Codebreaker()
         self.__max_attempts = max_attempts
+        self.__positions_to_win = 4
 
     @property
     def max_attempts(self):
@@ -51,7 +52,7 @@ class Mastermind:
                 f"Attempt {attempt}: {correct_positions} correct positions, {correct_color} correct colors in the wrong position."
             )
 
-            if correct_positions == 4:
+            if correct_positions == self.__positions_to_win:
                 print(f"You won in {attempt}! You cracked the code!")
                 return
 

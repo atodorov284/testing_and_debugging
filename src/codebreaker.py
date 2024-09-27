@@ -1,6 +1,6 @@
 class Codebreaker:
     def __init__(self) -> None:
-        pass
+        self.__num_of_characters = 4
 
     def make_guess(self) -> list:
         while True:
@@ -10,7 +10,7 @@ class Codebreaker:
             ).upper()
             if (
                 all(char in ["W", "B", "Y", "G", "R", "K"] for char in guess)
-                and len(guess) == 4
+                and len(guess) == self.__num_of_characters
             ):
                 return list(guess)
             print(
