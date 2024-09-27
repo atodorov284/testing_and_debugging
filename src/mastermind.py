@@ -36,17 +36,10 @@ class Mastermind:
             a == b for a, b in zip(guess, self.codemaker.secret_code)
         )
 
-        secret_code_copy = list(self.codemaker.secret_code)
-
-        for i, symbol in enumerate(guess):
-            if symbol == self.codemaker.secret_code[i]:
-                secret_code_copy[i] = None
-
-        correct_colors = 0
-        for i, symbol in enumerate(guess):
-            if symbol in secret_code_copy and symbol != self.codemaker.secret_code[i]:
-                correct_colors += 1
-                secret_code_copy.remove(symbol)
+        correct_colors = sum(
+            a in self.codemaker.secret_code and a != b
+            for a, b in zip(guess, self.codemaker.secret_code)
+        )
 
         return correct_positions, correct_colors
 
